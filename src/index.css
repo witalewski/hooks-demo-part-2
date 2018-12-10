@@ -1,14 +1,67 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin-ext");
+
+* {
+  font-family: "Lato", sans-serif;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.repos-list {
+  max-width: 100%;
+  padding-left: 0;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap;
+
+  list-style: none;
+}
+
+.repos-list__item {
+  flex: 0 0 300px;
+  margin: 8px 2px;
+
+  overflow: hidden;
+}
+
+.repo {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+
+  height: 100%;
+  padding: 12px;
+
+  border: solid 1px #d1d5da;
+
+  font-size: 14px;
+  color: #586069;
+}
+
+.repo__name {
+  margin: 0;
+  font-size: 16px;
+}
+
+.repo__description {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.repo__details {
+  margin: 0;
+}
+
+.repo__language-color {
+  border-radius: 50%;
+  margin-right: 4px;
+  display: inline-block;
+  height: 12px;
+  padding-top: 1px;
+  width: 12px;
+}
+
+.repo__language {
+  margin-right: 12px;
 }
