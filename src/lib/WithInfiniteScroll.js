@@ -12,18 +12,18 @@ export class WithInfiniteScroll extends Component {
     this.selfRef.current.getBoundingClientRect().bottom <
       window.innerHeight + window.pageYOffset;
 
-  onScroll = () => this.shouldLoadMoreItems() && this.props.loadMoreItems();
-  onResize = () => this.shouldLoadMoreItems() && this.props.loadMoreItems();
+  onWindowEvent = () =>
+    this.shouldLoadMoreItems() && this.props.loadMoreItems();
 
   componentDidMount() {
-    window.addEventListener("scroll", this.onScroll);
-    window.addEventListener("resize", this.onResize);
+    window.addEventListener("scroll", this.onWindowEvent);
+    window.addEventListener("resize", this.onWindowEvent);
     this.props.loadMoreItems();
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.onScroll);
-    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("scroll", this.onWindowEvent);
+    window.removeEventListener("resize", this.onWindowEvent);
   }
 
   render() {
