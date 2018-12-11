@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import axios from "axios";
 import { GitRepo } from "./GitRepo";
 import { WithInfiniteScroll } from "../lib/WithInfiniteScroll";
@@ -7,6 +7,7 @@ export class GitReposFeed extends Component {
   constructor(props) {
     super(props);
     this.state = { items: [], lastLoadedItem: 0, isLoading: false };
+    this.listRef = createRef();
   }
   loadMoreItems = () => {
     this.setState({ isLoading: true });
@@ -27,7 +28,11 @@ export class GitReposFeed extends Component {
 
   render() {
     return (
-      <WithInfiniteScroll loadMoreItems={this.loadMoreItems} isLoading={this.state.isLoading}>
+      <WithInfiniteScroll
+        loadMoreItems={this.loadMoreItems}
+        isLoading={this.state.isLoading}
+        forwardedRef={this.listRef}
+      >
         {this.state.items.length ? (
           <ul className="repos-list" ref={this.listRef}>
             {this.state.items.map(item => (
