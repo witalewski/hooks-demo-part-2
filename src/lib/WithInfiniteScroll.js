@@ -1,15 +1,10 @@
-import React, { Component, createRef } from "react";
+import React, { Component } from "react";
 
 export class WithInfiniteScroll extends Component {
-  constructor(props) {
-    super(props);
-    this.selfRef = createRef();
-  }
-
   shouldLoadMoreItems = () =>
     !this.props.isLoading &&
-    this.selfRef.current &&
-    this.selfRef.current.getBoundingClientRect().bottom <
+    this.props.forwardedRef.current &&
+    this.props.forwardedRef.current.getBoundingClientRect().bottom <
       window.innerHeight + window.pageYOffset;
 
   onWindowEvent = () =>
@@ -27,6 +22,6 @@ export class WithInfiniteScroll extends Component {
   }
 
   render() {
-    return <div ref={this.selfRef}>{this.props.children}</div>;
+    return <div>{this.props.children}</div>;
   }
 }
